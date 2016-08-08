@@ -1,0 +1,383 @@
+.wp-caption{
+  padding:rem-calc(4);
+}
+
+.wp-caption img{
+  max-width:100%;
+}
+
+p.wp-caption-text{
+  font-size:90%;
+  color: #666;
+  padding:rem-calc(10) 0;
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+@include breakpoint(medium) {
+	@include scrollbars(.5em, rgba($white, .3), transparent);
+}
+
+$medium-sidemenu-width	:	70px;
+$large-sidemenu-width		:	240px;
+$small-topbar-height		: 50px;
+$medium-topbar-height		:	100px;
+
+body, .container {
+	display: block;
+	position: relative;
+	background: $background_color;
+	font-family: $font-family-sans-serif;
+	color: $white;
+	@include clearfix();
+	@include breakpoint(medium) {
+		margin: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+	}
+}
+.menu-and-container {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	@include clearfix();
+	.main-content-container {
+		position: relative;
+		display: block;
+		@include breakpoint(medium) {
+			position: absolute;
+			box-shadow: -1px -1px 4px $black;
+			z-index: 3;
+		}
+	}
+	.top-menu, .side-menu, .mobile-menu {
+		position: absolute;
+		display: block;
+		box-shadow: -1px -1px 4px $black;
+		z-index: 3;
+	}
+	.mobile-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $small-topbar-height;
+		overflow: hidden;
+		background: $background_color;
+		z-index: 99;	
+		@include breakpoint(medium) {
+			display: none;
+		}
+		a {
+			color: $white;
+		}
+		.hamburger {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			float: left;
+			text-align: center;
+			line-height: 50px;
+			font-size: 2em;
+		}
+		.mobile-logo {
+			display: inline-block;
+			width: calc(100% - 100px);
+			text-align: center;
+			line-height: 50px;
+			img {
+				height: 30px;
+			}
+		}
+		.search {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			float: right;
+			text-align: center;
+			line-height: 50px;
+			font-size: 1.5em;
+		}
+	}
+	.top-menu {
+		display: none;
+		@include breakpoint(medium) {
+			display: block;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: $medium-topbar-height;
+			overflow: hidden;
+			background: $background_color;
+			z-index: 9;
+			.medium-logo {
+				display: block;
+				width: 120px;
+				position: absolute;
+				left: 20px;
+				top: 35px;
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.side-menu {
+		display: none;
+		@include breakpoint(medium) {
+			display: block;
+			z-index: 6;
+		}
+		top: $medium-topbar-height;
+		left: 0;
+		bottom: 0;
+		width: $medium-sidemenu-width;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background: $nav_primary_color;
+		transition: $single_transition;
+		padding-bottom: 30px;
+		.menu {
+			margin: 0;
+			.sub-menu {
+				display: none;
+			}
+			li {
+				display: block;
+				line-height: 50px;
+				vertical-align: middle;
+				a {
+					display: block;
+					height: 60px;
+					line-height: 50px;
+					padding: 0;
+					width: 100%;
+					color: $white;
+					font-size: .9em;
+					cursor: pointer;
+					text-align: center;
+					background: $nav_primary_color;
+					transition: $single_transition;
+					i {
+						margin: 0;
+						font-size: 2.2em;
+					}
+					span {
+						display: none;
+					}
+					&:hover {
+						background: $nav_secondary_color;
+						color: darken($white, 10%);
+					}
+				}
+			}
+			@include breakpoint(large) {
+				.menu-item.active {
+					background: $nav_secondary_color;
+					&.menu-item-has-children {
+						& > a {
+							box-shadow: 0px 1px 4px $black;
+						}
+					}
+					.sub-menu {
+						display: block;
+						padding: 10px 0;
+						margin-left: 30px;
+					}
+					a {
+						background: rgba(255,255,255,0);
+					}
+					li {
+						line-height: 30px;
+						a {
+							height: 30px;
+							line-height: 30px;
+						}
+					}
+				}
+			}
+		}
+		@include breakpoint(large) {
+			width: $large-sidemenu-width;
+			.menu li a {
+				text-align: left;
+				padding: 0 20px;
+				i {
+					margin-right: 10px; 
+					font-size: 1.6em;
+					position: relative;
+			    top: -2px;
+				}
+				span {
+					display: inline;
+				}
+			}
+		}
+	}
+	.main-content-container {
+		padding: 30px 4px 20px 4px;
+		@include breakpoint(medium) {
+			top: $small-topbar-height;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			overflow-x: hidden;
+			overflow-y: auto;
+			padding: 20px 4px;
+		}
+		background: $nav_secondary_color;
+		transition: $single_transition;
+		@include breakpoint(medium) {
+			top: $medium-topbar-height;
+			left: $medium-sidemenu-width;
+			padding: 20px;
+		}
+		@include breakpoint(large) {
+			left: $large-sidemenu-width;
+			padding: 40px 50px;
+		}
+		@include clearfix();
+	}
+}
+.hide-add-department-form {
+	display: none;
+}
+.department-selector {
+	text-align: right;
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		width: 70%;
+		float: right;
+		position: relative;
+		height: $medium-topbar-height;
+		line-height: $medium-topbar-height;
+		margin-right: 20px;
+	}
+	li {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
+		cursor: pointer;
+		font-weight: 600;
+		font-size: .9em;
+		margin-right: 20px;
+		&:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+}
+.full-mobile-menu {
+	display: block;
+	width: 100%;
+	z-index: 99999;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: -200%;
+	overflow: hidden;
+	text-align: left;
+	opacity: 0;
+	transition: opacity .3s ease;
+	.mobile-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		cursor: pointer;
+		background: rgba(0,0,0,.8);
+	}
+	.menu-area {
+		display: block;
+		width: 250px;
+		max-width: 100%;
+		position: absolute;
+		overflow-x: hidden;
+		overflow-y: auto;
+		top: 0;
+		bottom: 0;
+		left: -250px;
+		text-align: left;
+		background: $nav_primary_color;
+		padding: 0;
+		transition: $single_transition;
+		transition-delay: .3s;
+		.x-close {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			font-size: 2em;
+			cursor: pointer;
+		}
+		.menu {
+			margin: 0;
+			&#menu-main-navigation {
+				margin-top: 50px;
+			}
+			.sub-menu {
+				display: none;
+			}
+			li {
+				display: block;
+				line-height: 50px;
+				vertical-align: middle;
+				a {
+					display: block;
+					height: 60px;
+					line-height: 50px;
+					padding: 0 20px;
+					width: 100%;
+					color: $white;
+					font-size: .9em;
+					cursor: pointer;
+					background: $nav_primary_color;
+					i {
+						font-size: 2.2em;
+					}
+				}
+			}
+		}
+	}
+	&.active {
+		left: 0;
+		opacity: 1;
+		.menu-area {
+			left: 0;
+		}
+	}
+}

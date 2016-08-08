@@ -1,0 +1,62 @@
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,600);
+@import url(https://fonts.googleapis.com/css?family=PT+Serif:400,700);
+
+@font-face {
+  font-family: 'weather';
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+       url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// We use these to define default font stacks
+$font-family-sans-serif: "Work Sans", Helvetica, Arial, sans-serif;
+$font-family-serif: "PT Serif", Georgia, Times, serif;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+
+
+// Custom colors
+$carnation						:	#f64352;
+$dodger_blue					:	#1c9cf0;
+$cornflower						:	#6755f9;
+$eastern_blue					:	#239bab;
+$viking_blue					:	#50d2c2;
+$fiord								:	#415873;
+
+$big_stone						:	#14223b;
+$rhino								:	#293b5a;
+$cloud_burst					:	#21324f;
+
+$intranet_offwhite		: #F1F1F1;
+$intranet_black				:	#222222;
+
+$transparent          : rgba(255, 255, 255, 0);
+
+$twitter: #00aced;
+$facebook: #3b5998;
+$linkedin: #007bb6;
+$instagram: #517fa4;
+
+
+// Assign custom colors
+$primary-blue					: $dodger_blue;
+$primary-lightblue		:	$viking_blue;
+$primary-teal					:	$eastern_blue;
+$primary-purple				:	$cornflower;
+$primary-red					:	$carnation;
+
+$white	 							:	$intranet_offwhite;
+$black	 							:	$intranet_black;
+
+$background_color			:	$cloud_burst;
+$nav_primary_color		:	$rhino;
+$nav_secondary_color	:	$big_stone;
+
+$single_transition		: all .3s ease;
+
+
+$body-background: $background_color;

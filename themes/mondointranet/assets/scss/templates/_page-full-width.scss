@@ -1,0 +1,12 @@
+#page-full-width {
+  @include grid-row();
+  margin-top: 0;
+
+  .main-content {
+    @include breakpoint(small) {
+      @include grid-column(12);
+    }
+
+  }
+
+}
